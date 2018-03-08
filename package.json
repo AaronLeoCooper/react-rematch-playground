@@ -6,8 +6,10 @@
     "@rematch/core": "0.5.0",
     "axios": "0.18.0",
     "dotenv": "5.0.1",
+    "prop-types": "15.6.1",
     "react": "16.2.0",
-    "react-dom": "16.2.0"
+    "react-dom": "16.2.0",
+    "react-redux": "5.0.7"
   },
   "scripts": {
     "start": "react-scripts start",

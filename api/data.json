@@ -1,0 +1,14 @@
+{
+  "/user": {
+    "GET": {
+      "data": {
+        "name": "Garry Trotter",
+        "role": "Muggle",
+        "sign": "Leprechaun"
+      }
+    },
+    "POST": {
+      "editable": ["name"]
+    }
+  }
+}

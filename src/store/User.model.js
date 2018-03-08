@@ -6,14 +6,14 @@ export default {
     error: ''
   },
   reducers: {
-    logIn(state, payload) {
+    loggedIn(state, payload) {
       return {
         ...state,
         loggedIn: true,
         userData: payload
       };
     },
-    logOut(state) {
+    loggedOut(state) {
       return {
         loggedIn: false
       };
@@ -32,13 +32,13 @@ export default {
     }
   },
   effects: {
-    async startLogIn(payload, rootState) {
+    async startLogIn() {
       this.removeError();
 
       try {
-        const data = await api.get(payload);
+        const data = await api.get();
 
-        this.logIn(data);
+        this.loggedIn(data);
       } catch (err) {
         this.addError(err);
       }

@@ -1,5 +1,9 @@
 import api from './';
 
-export function get(userId) {
+function get(userId) {
   return api.get(`/user/${userId}`);
+};
+
+export default {
+  get
 };
