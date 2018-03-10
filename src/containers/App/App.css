@@ -1,0 +1,17 @@
+.App {
+  text-align: center;
+}
+
+.App__loggingIn {
+  display: block;
+  font-size: 2em;
+  padding: 30px;
+  color: grey;
+}
+
+.App__error {
+  display: block;
+  font-size: 2em;
+  padding: 30px;
+  color: red;
+}

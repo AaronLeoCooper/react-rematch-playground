@@ -1,47 +1,68 @@
 import api from '../api/User.api';
 
-export default {
-  state: {
-    loggedIn: false,
-    error: ''
-  },
-  reducers: {
-    loggedIn(state, payload) {
-      return {
-        ...state,
-        loggedIn: true,
-        userData: payload
-      };
-    },
-    loggedOut(state) {
-      return {
-        loggedIn: false
-      };
-    },
-    addError(state, payload) {
-      return {
-        ...state,
-        error: payload
-      };
-    },
-    removeError(state) {
-      return {
-        ...state,
-        error: ''
-      };
-    }
-  },
-  effects: {
-    async startLogIn() {
-      this.removeError();
+export const initialState = {
+  isLoggingIn: false,
+  isLoggedIn: false,
+  error: '',
+  userData: {}
+};
 
-      try {
-        const data = await api.get();
-
-        this.loggedIn(data);
-      } catch (err) {
-        this.addError(err);
-      }
-    }
+export const reducers = {
+  startLoggingIn(state) {
+    return {
+      ...state,
+      isLoggingIn: true
+    };
+  },
+  stopLoggingIn(state) {
+    return {
+      ...state,
+      isLoggingIn: false
+    };
+  },
+  loggedIn(state, payload) {
+    return {
+      ...state,
+      isLoggedIn: true,
+      userData: payload
+    };
+  },
+  logOut() {
+    return initialState;
+  },
+  addError(state, payload) {
+    return {
+      ...state,
+      error: payload
+    };
+  },
+  removeError(state) {
+    return {
+      ...state,
+      error: ''
+    };
   }
+};
+
+export const effects = {
+  async startLogIn() {
+    this.removeError();
+    this.startLoggingIn();
+
+    try {
+      const res = await api.get();
+
+      this.loggedIn(res.data);
+    } catch (err) {
+      this.addError(err.toString());
+    }
+
+    this.stopLoggingIn();
+  }
+}
+
+export default {
+  state: initialState,
+  reducers,
+  effects
 };

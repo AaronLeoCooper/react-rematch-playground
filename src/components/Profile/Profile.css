@@ -1,0 +1,10 @@
+.Profile__image {
+  display: block;
+  width: 400px;
+  margin: 20px auto;
+}
+
+.Profile__logoutButton {
+  margin: 30px;
+  font-size: 2em;
+}

@@ -1,14 +1,11 @@
 {
   "/user": {
-    "GET": {
-      "data": {
-        "name": "Garry Trotter",
-        "role": "Muggle",
-        "sign": "Leprechaun"
-      }
+    "data": {
+      "name": "Renny Poo",
+      "role": "Mummy's boy",
+      "sign": "SAGITTARIUS",
+      "imageUrl": "images/rennypoo.jpg"
     },
-    "POST": {
-      "editable": ["name"]
-    }
+    "methods": ["GET", "POST"]
   }
 }

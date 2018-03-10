@@ -1,15 +1,19 @@
 import axios from 'axios';
 
-const { API_PORT, API_HOST, API_PROTOCOL } = process.env;
+const {
+  REACT_APP_API_PORT,
+  REACT_APP_API_HOST,
+  REACT_APP_API_PROTOCOL
+} = process.env;
 
-const protocol = API_PROTOCOL || 'http';
+const protocol = REACT_APP_API_PROTOCOL || 'http';
 
-const host = API_HOST
-  ? API_HOST
+const host = REACT_APP_API_HOST
+  ? REACT_APP_API_HOST
   : 'localhost';
 
-const port = API_PORT
-  ? `:${API_PORT}`
+const port = REACT_APP_API_PORT
+  ? `:${REACT_APP_API_PORT}`
   : '';
 
 export default axios.create({

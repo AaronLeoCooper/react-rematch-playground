@@ -8,6 +8,18 @@ const responseDelay = API_DELAY || 0;
 
 const router = Router();
 
+// disable cache for all responses
+router.use((req, res, next) => {
+  res
+    .set({
+      'Cache-Control': 'private, no-cache, no-store, must-revalidate',
+      'Expires': '-1',
+      'Pragma': 'no-cache'
+    });
+
+  next();
+});
+
 router.use((req, res, next) => {
   const { path, method } = req;
 
@@ -16,9 +28,11 @@ router.use((req, res, next) => {
   }
 
   setTimeout(() => {
-    const jsonData = getData(path, method);
+    const data = getData(path, method);
 
-    res.status(200).json(jsonData);
+    res
+      .status(200)
+      .json(data);
   }, responseDelay);
 });
 
